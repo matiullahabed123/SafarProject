@@ -25,7 +25,7 @@ from rest_framework import status
 #         return Response({"status": False, "errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 class CustomUserViewSet(viewsets.ModelViewSet):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAdminUser]
     serializer_class = CustomUserSerializers
     queryset = CustomUser.objects.all()
 
