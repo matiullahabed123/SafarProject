@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    "corsheaders",
     'accounts',
     'companies',
     'geography',
@@ -58,7 +59,10 @@ INSTALLED_APPS = [
     
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -67,6 +71,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'silk.middleware.SilkyMiddleware',
+
 
 ]
 
@@ -167,3 +172,13 @@ SPECTACULAR_SETTINGS = {
     # OTHER SETTINGS
 }
 
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),   #  short (secure)
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),      #  longer
+    'ROTATE_REFRESH_TOKENS': True,                    #  new refresh token
+    'BLACKLIST_AFTER_ROTATION': True,                 #  old invalidate
+
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}

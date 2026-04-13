@@ -1,0 +1,11 @@
+
+# first open project folder in cmd 
+# second run the following cmmands
+
+
+git status  # show the all updates files
+git add .  # git all update files or specific file 
+git add models.py # git specific file  like that <--
+git commit -m "updated the some files" # for showing update file
+git push  # that push data to default(main) branch 
+git push origin master # push updates files on github  your selected branch
